@@ -6,7 +6,7 @@
             "id": "45a84196-259f-4f87-b116-5c5bbd6b5b96",
             "actions": [
                 {
-                    "name": "GrabDie",
+                    "name": "GrabDice",
                     "type": "Button",
                     "id": "d91aebc5-65db-4d25-b451-84a04441b8d2",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GrabDie",
+                    "action": "GrabDice",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

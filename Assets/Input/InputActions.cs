@@ -28,7 +28,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""45a84196-259f-4f87-b116-5c5bbd6b5b96"",
             ""actions"": [
                 {
-                    ""name"": ""GrabDie"",
+                    ""name"": ""GrabDice"",
                     ""type"": ""Button"",
                     ""id"": ""d91aebc5-65db-4d25-b451-84a04441b8d2"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""GrabDie"",
+                    ""action"": ""GrabDice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -56,7 +56,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_GrabDie = m_Gameplay.FindAction("GrabDie", throwIfNotFound: true);
+        m_Gameplay_GrabDice = m_Gameplay.FindAction("GrabDice", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +118,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_Gameplay_GrabDie;
+    private readonly InputAction m_Gameplay_GrabDice;
     public struct GameplayActions
     {
         private @InputActions m_Wrapper;
         public GameplayActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction GrabDice => m_Wrapper.m_Gameplay_GrabDie;
+        public InputAction @GrabDice => m_Wrapper.m_Gameplay_GrabDice;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -133,16 +133,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
-            GrabDice.started += instance.OnGrabDie;
-            GrabDice.performed += instance.OnGrabDie;
-            GrabDice.canceled += instance.OnGrabDie;
+            @GrabDice.started += instance.OnGrabDice;
+            @GrabDice.performed += instance.OnGrabDice;
+            @GrabDice.canceled += instance.OnGrabDice;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
         {
-            GrabDice.started -= instance.OnGrabDie;
-            GrabDice.performed -= instance.OnGrabDie;
-            GrabDice.canceled -= instance.OnGrabDie;
+            @GrabDice.started -= instance.OnGrabDice;
+            @GrabDice.performed -= instance.OnGrabDice;
+            @GrabDice.canceled -= instance.OnGrabDice;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -162,6 +162,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public GameplayActions @Gameplay => new GameplayActions(this);
     public interface IGameplayActions
     {
-        void OnGrabDie(InputAction.CallbackContext context);
+        void OnGrabDice(InputAction.CallbackContext context);
     }
 }
