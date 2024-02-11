@@ -7,13 +7,13 @@ namespace DiceRollingGame.Managers
 
     public class SelectManager : SerializedMonoBehaviour, IManager
     {
-        [SerializeField] private InputActions input;
         [SerializeField] private Camera camera;
         [OdinSerialize] private IRoller roller;
 
         private IDice currentlyIndicatedDice;
         private IDice currentlySelectedGameObject;
-
+        private InputActions input;
+        
         private const string InteractiveLayer = "InteractiveLayer";
 
         public void Initialize()
