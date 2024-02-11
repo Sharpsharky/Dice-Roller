@@ -6,4 +6,4 @@ Simple dice rolling game.
 
 ## Important
 
-If for some reason the actions fromnew input system don't resolve. Change it to old input system.
+If for some reason actions from new input system don't resolve then change them to old input system.
