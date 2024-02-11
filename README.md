@@ -1,4 +1,4 @@
-<img src="Images/dice.PNG" align="middle" width="3000"/>
+<img src="Images/dice.png" align="middle" width="3000"/>
 
 # Dice Roller
 
