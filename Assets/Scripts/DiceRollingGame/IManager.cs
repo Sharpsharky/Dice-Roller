@@ -1,4 +1,4 @@
-namespace DiceRollingGame.Managers
+namespace DiceRollingGame
 {
     public interface IManager
     {

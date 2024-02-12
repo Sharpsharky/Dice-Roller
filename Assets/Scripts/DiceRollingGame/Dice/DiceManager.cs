@@ -1,8 +1,7 @@
 namespace DiceRollingGame.Dice
 {
     using System.Collections.Generic;
-    using Input;
-    using Managers;
+    using Roller;
     using Sirenix.OdinInspector;
     using Sirenix.Serialization;
 

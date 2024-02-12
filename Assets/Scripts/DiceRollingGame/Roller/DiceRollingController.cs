@@ -1,4 +1,4 @@
-namespace DiceRollingGame.Input
+namespace DiceRollingGame.Roller
 {
     using System;
     using System.Collections;

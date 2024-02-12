@@ -3,7 +3,6 @@ namespace DiceRollingGame.Dice
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using Input;
     using TMPro;
     using UnityEngine;
 

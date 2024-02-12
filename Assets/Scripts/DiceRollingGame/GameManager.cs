@@ -1,4 +1,4 @@
-namespace DiceRollingGame.Managers
+namespace DiceRollingGame
 {
     using System.Collections.Generic;
     using Sirenix.OdinInspector;

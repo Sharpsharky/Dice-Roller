@@ -1,4 +1,4 @@
-namespace DiceRollingGame.Input
+namespace DiceRollingGame.Dice
 {
     using System;
     using UnityEngine;

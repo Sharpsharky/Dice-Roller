@@ -1,6 +1,7 @@
-namespace DiceRollingGame.Input
+namespace DiceRollingGame.Roller
 {
     using System;
+    using Dice;
     using UnityEngine;
 
     public interface IRoller

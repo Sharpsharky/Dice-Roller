@@ -1,6 +1,7 @@
-namespace DiceRollingGame.Managers
+namespace DiceRollingGame.Input
 {
-    using Input;
+    using Dice;
+    using Roller;
     using Sirenix.OdinInspector;
     using Sirenix.Serialization;
     using UnityEngine;

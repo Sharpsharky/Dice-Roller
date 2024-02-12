@@ -1,7 +1,7 @@
 namespace DiceRollingGame.Score
 {
-    using Input;
-    using Managers;
+    using Dice;
+    using Roller;
     using Sirenix.OdinInspector;
     using Sirenix.Serialization;
     using UnityEngine;
