@@ -2,17 +2,22 @@ namespace DiceRollingGame.Score
 {
     using Dice;
     using Roller;
-    using Sirenix.OdinInspector;
-    using Sirenix.Serialization;
     using UnityEngine;
+    using Zenject;
 
-    public class ScoreManager : SerializedMonoBehaviour, IManager
+    public class ScoreManager : MonoBehaviour, IInitializable
     {
-        [OdinSerialize] private IRoller roller;
-        [SerializeField] private InterfaceUIView interfaceUIView;
-
+        private IRoller roller;
+        private InterfaceUIView interfaceUIView;
         private int overallScore;
-        
+
+        [Inject]
+        public void Construct(IRoller roller, InterfaceUIView interfaceUIView)
+        {
+            this.roller = roller;
+            this.interfaceUIView = interfaceUIView;
+        }
+
         public void Initialize()
         {
             roller.OnDiceTossed += WaitForDiceToFinishMoving;

@@ -1,14 +1,25 @@
 namespace DiceRollingGame.Dice
 {
-    using System.Collections.Generic;
     using Roller;
-    using Sirenix.OdinInspector;
-    using Sirenix.Serialization;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using Zenject;
 
-    public class DiceManager : SerializedMonoBehaviour, IManager
+    public class DiceManager : MonoBehaviour, IInitializable
     {
-        [OdinSerialize] private List<IDice> dice;
-        [OdinSerialize] private IRoller diceRollingController;
+        private List<IDice> dice;
+        private IRoller roller;
+        private Coroutine rollRoutine;
+
+        private const float RollFrequency = 0.3f;
+
+        [Inject]
+        public void Construct(List<IDice> dice, IRoller roller)
+        {
+            this.dice = new List<IDice>(dice);
+            this.roller = roller;
+        }
 
         public void Initialize()
         {
@@ -20,8 +31,26 @@ namespace DiceRollingGame.Dice
 
         public void RandomRoll()
         {
-            if(dice.Count != 0)
-                diceRollingController.RandomRoll(dice[0]);
+            if (dice == null || dice.Count == 0)
+                return;
+
+            if (rollRoutine != null)
+            {
+                StopCoroutine(rollRoutine);
+                rollRoutine = null;
+            }
+
+            rollRoutine = StartCoroutine(RandomRollSequence());
         }
+
+        private IEnumerator RandomRollSequence()
+        {
+            foreach (var die in dice)
+            {
+                roller.RandomRoll(die);
+                yield return new WaitForSeconds(RollFrequency);
+            }
+        }
+
     }
 }

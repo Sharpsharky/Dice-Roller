@@ -2,28 +2,33 @@ namespace DiceRollingGame.Input
 {
     using Dice;
     using Roller;
-    using Sirenix.OdinInspector;
-    using Sirenix.Serialization;
     using UnityEngine;
+    using Zenject;
 
-    public class SelectManager : SerializedMonoBehaviour, IManager
+    public class SelectManager : MonoBehaviour, IInitializable
     {
-        [SerializeField] private Camera camera;
-        [OdinSerialize] private IRoller roller;
-
+        private Camera cam;
+        private IRoller roller;
         private IDice currentlyIndicatedDice;
         private IDice currentlySelectedGameObject;
         private InputActions input;
         
         private const string InteractiveLayer = "InteractiveLayer";
 
+        [Inject]
+        public void Construct(Camera cam, IRoller roller)
+        {
+            this.cam = cam;
+            this.roller = roller;
+        }
+
         public void Initialize()
         {
             input = new InputActions();
             input.Enable();
-            roller.Initialize(camera);
+            roller.Initialize(cam);
         }
-        
+
         private void Update()
         {
             FindTargetables();
@@ -40,7 +45,7 @@ namespace DiceRollingGame.Input
         
         private void FindTargetables()
         {
-            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            var ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, 999f, LayerMask.GetMask(InteractiveLayer)))
             {
                 if (hit.transform.gameObject.TryGetComponent<IDice>(out var targetable))
