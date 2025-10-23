@@ -5,6 +5,6 @@
 Simple dice rolling game. Drag and roll! 
 
 ## Additional Resources
-[Odin Inspector](https://odininspector.com/)
+[Extenject](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735)
 
 [DOTween](https://dotween.demigiant.com/)
