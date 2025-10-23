@@ -69,13 +69,13 @@ namespace DiceRollingGame.Roller
             }
             else if (velocity.magnitude < diceRollingSettings.MinSpeedToToss)
             {
-                currentDice.Rigidbody.velocity = Vector3.zero;
+                currentDice.Rigidbody.linearVelocity = Vector3.zero;
                 currentDice.Rigidbody.angularVelocity = Vector3.zero;
                 PutDiceToInitialPos();
                 return;
             }
         
-            currentDice.Rigidbody.velocity = velocity;
+            currentDice.Rigidbody.linearVelocity = velocity;
             OnDiceTossed?.Invoke(currentDice);
 
             ResetDice();
@@ -107,7 +107,7 @@ namespace DiceRollingGame.Roller
             
             var randomRotMagnitude = Random.Range(diceRandomRollingSettings.MinRandomRotation, diceRandomRollingSettings.MaxRandomRotation);
             
-            currentDice.Rigidbody.velocity = new Vector3(xRandomVel,1,yRandomVel).normalized * randomVelMagnitude;
+            currentDice.Rigidbody.linearVelocity = new Vector3(xRandomVel,1,yRandomVel).normalized * randomVelMagnitude;
             currentDice.Rigidbody.angularVelocity = new Vector3(xRandomRot,yRandomRot,zRandomRot).normalized * randomRotMagnitude;
         }
         

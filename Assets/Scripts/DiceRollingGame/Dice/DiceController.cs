@@ -60,7 +60,7 @@ namespace DiceRollingGame.Dice
 
         private bool IsMoving()
         {
-            var movementMagnitude = rigidbody.velocity.magnitude + rigidbody.angularVelocity.magnitude;
+            var movementMagnitude = rigidbody.linearVelocity.magnitude + rigidbody.angularVelocity.magnitude;
             
             return !(movementMagnitude < movementDetectionOffset);
         }
@@ -75,13 +75,15 @@ namespace DiceRollingGame.Dice
             foreach (var diceFace in diceFaces)
             {
                 var dot = Vector3.Dot(diceFace.Value.Normal, localVectorToMatch);
-
+                
                 if (dot > closestDot)
                 {
                     closestDot = dot;
                     closestSide = diceFace.Key;
                 }
             }
+
+            var x = transform.position.x;
             
             return closestSide;
         }

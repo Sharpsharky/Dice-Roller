@@ -5,12 +5,12 @@ namespace DiceRollingGame.Dice
     [CreateAssetMenu(menuName = "Data/Dice Random Rolling Settings")]
     public class DiceRandomRollingSettings : ScriptableObject
     {
-        [SerializeField] float randomDirectionOffset = 0.5f;
-        [SerializeField] float randomAngleOffset = 1f;
-        [SerializeField] float minRandomVelocity = 8f;
-        [SerializeField] float maxRandomVelocity = 12f;
-        [SerializeField] float minRandomRotation = 8f;
-        [SerializeField]  float maxRandomRotation = 12f;
+        [SerializeField] private float randomDirectionOffset = 0.5f;
+        [SerializeField] private float randomAngleOffset = 1f;
+        [SerializeField] private float minRandomVelocity = 8f;
+        [SerializeField] private float maxRandomVelocity = 12f;
+        [SerializeField] private float minRandomRotation = 8f;
+        [SerializeField] private float maxRandomRotation = 12f;
 
         public float RandomDirectionOffset => randomDirectionOffset;
         public float RandomAngleOffset => randomAngleOffset;
